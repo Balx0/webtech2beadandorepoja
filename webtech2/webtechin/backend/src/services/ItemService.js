@@ -89,11 +89,11 @@ function updateItem(item) {
     });
 }
 exports.updateItem = updateItem;
-function deleteItem(item) {
+function deleteItem(itemId) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, MongoService_1.mongoService.deleteOneCollection("items", { _id: new mongodb_1.ObjectId(item) })];
+                case 0: return [4 /*yield*/, MongoService_1.mongoService.deleteOneCollection("items", { _id: new mongodb_1.ObjectId(itemId) })];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];

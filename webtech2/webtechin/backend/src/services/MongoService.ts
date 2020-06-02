@@ -1,5 +1,6 @@
 import * as MongoClient from 'mongodb';
 import { URL, DATABASENAME } from '../conf';
+import { Query } from '@angular/core';
 
 
 
@@ -123,19 +124,23 @@ class MongoService {
 
     deleteOneCollection(collectionName: string, query: any): Promise<void> {
         return new Promise((resolve, reject) => {
+            console.log("we here")
             MongoClient.connect(this.url, {
                 useUnifiedTopology: true,
                 useNewUrlParser: true,
             })
                 .then((db) => {
                     var dbo = db.db(this.databaseName);
+                    
                     return dbo.collection(collectionName).deleteOne(query).then((collection) => {
+                        
                         if (collection.deletedCount == 0) {
-                            throw new Error("Nem sikerült a törlés");
+                            throw new Error("Could not delete item");
                         }
                         db.close();
                         resolve();
                     }).catch(err => {
+                       
                         console.log(`DB Connection Error: ${err.message}`);
                         db.close();
                         reject(err.message);

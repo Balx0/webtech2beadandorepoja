@@ -15,6 +15,6 @@ import { mongoService } from "./MongoService";
     export async function updateItem(item: Item) {
         await mongoService.updateOneCollection("items", { _id: new ObjectId(item._id) }, { $set: { status: item._id } });
     }
-    export async function deleteItem(item: string) {
-        await mongoService.deleteOneCollection("items", { _id: new ObjectId(item) });
+    export async function deleteItem(itemId: string) {
+        await mongoService.deleteOneCollection("items", { _id: new ObjectId(itemId)});
     }

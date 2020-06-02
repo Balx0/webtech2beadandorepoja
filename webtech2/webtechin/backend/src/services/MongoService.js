@@ -124,6 +124,7 @@ var MongoService = /** @class */ (function () {
     MongoService.prototype.deleteOneCollection = function (collectionName, query) {
         var _this = this;
         return new Promise(function (resolve, reject) {
+            console.log("we here");
             MongoClient.connect(_this.url, {
                 useUnifiedTopology: true,
                 useNewUrlParser: true
@@ -132,7 +133,7 @@ var MongoService = /** @class */ (function () {
                 var dbo = db.db(_this.databaseName);
                 return dbo.collection(collectionName).deleteOne(query).then(function (collection) {
                     if (collection.deletedCount == 0) {
-                        throw new Error("Nem sikerült a törlés");
+                        throw new Error("Could not delete item");
                     }
                     db.close();
                     resolve();

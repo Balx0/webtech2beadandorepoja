@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MaterialModule} from './add-item/material-module';
 import { ItemService } from './services/ItemService';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 
@@ -23,7 +24,8 @@ import { ItemService } from './services/ItemService';
     AppComponent,
     HomeComponent,
     ListItemsComponent,
-    AddItemComponent
+    AddItemComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,9 @@ import { ItemService } from './services/ItemService';
     MatInputModule,
     MatCheckboxModule,
     MaterialModule,
+    ],
+    entryComponents: [
+      DialogComponent
     ],
   providers: [
     ItemService

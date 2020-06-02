@@ -3,6 +3,9 @@ import { ListItemService } from '../list-items.service';
 import { ItemService} from '../services/ItemService';
 import { MatTableDataSource } from '@angular/material/table';
 import { Item } from '../model/item';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-list-items',
@@ -10,7 +13,7 @@ import { Item } from '../model/item';
   styleUrls: ['./list-items.component.css']
 })
 export class ListItemsComponent implements OnInit {
-
+  selectedItem;
   items;
  // pls;
   
@@ -21,12 +24,12 @@ export class ListItemsComponent implements OnInit {
     {name: 'Load', price: 200, expiration: new Date(2019, 5, 2)},
 ];
 */
-  constructor(private ItemService: ItemService) {
+  constructor(private ItemService: ItemService, public dialog: MatDialog) {
   }
 
 
 
-  displayedColumns: string[] = ['name', 'price', 'expiration'];
+  displayedColumns: string[] = ['name', 'price', 'expiration', 'update', 'delete'];
   dataSource = this.items;
 
   ngOnInit() {
@@ -45,4 +48,24 @@ export class ListItemsComponent implements OnInit {
     );
   }
 
+  deleteItem(item: Item) {
+    this.ItemService.deleteItem(item).subscribe(() => {
+      alert("Item Deleted!");
+      this.getItems();
+    }, () => {
+      alert("Item could not be deleted!");
+    }
+    );
+  }
+
+  /*openDialog(item: Item): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }*/
 }
