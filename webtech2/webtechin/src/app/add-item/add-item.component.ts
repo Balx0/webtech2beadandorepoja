@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemService } from '../services/ItemService';
+import { MatTableDataSource } from '@angular/material/table';
+import { Item } from '../model/item'
 
 @Component({
   selector: 'app-add-item',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddItemComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private itemService: ItemService) {
+  }
+  newItem = new Item();
   ngOnInit() {
   }
 
+  addItem() {
+    const post = this.newItem;
+   //console.log(post.price);
+    this.itemService.addItem(post);
+    console.log('pushed');
+  }
 }

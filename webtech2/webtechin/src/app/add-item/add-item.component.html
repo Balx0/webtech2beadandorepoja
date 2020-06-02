@@ -5,18 +5,27 @@
     <p>
       <mat-form-field class="example-full-width">
         <mat-label>ItemName</mat-label>
-        <textarea matInput placeholder="Butter"></textarea>
+        <textarea matInput  [(ngModel)]="newItem.name" [ngModelOptions]="{standalone: true}" placeholder="Butter"></textarea>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Item Price</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput [(ngModel)]="newItem.price" [ngModelOptions]="{standalone: true}"></textarea>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Expiration Date</mat-label>
-        <textarea matInput placeholder="2020.05.04."></textarea>
+        <textarea matInput [(ngModel)]="newItem.expiration" [ngModelOptions]="{standalone: true}" placeholder="2020.05.04."></textarea>
       </mat-form-field>
     </p>
 
-    <button mat-raised-button color="primary">Save Item</button>
+    <button mat-raised-button type="button" (click)="addItem()" color="primary">Save Item</button>
+   
   </form>
+
+  <mat-list>The item being added is:
+    <mat-list-item> Name: {{newItem.name}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Price: {{newItem.price}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Expiration: {{newItem.expiration}}</mat-list-item>
+  </mat-list>
   

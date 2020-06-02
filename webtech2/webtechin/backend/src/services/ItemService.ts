@@ -4,17 +4,17 @@ import { mongoService } from "./MongoService";
 
 
     export async function createTable() {
-        await mongoService.createCollection("Item");
+        await mongoService.createCollection("items");
     }
     export async function addItem(item: Item) {
-        await mongoService.insertOneCollection("Item", item);
+        await mongoService.insertOneCollection("items", item);
     }
     export async function listItems(): Promise<Item[]> {
-        return await mongoService.listCollection("Item", {}, {});
+        return await mongoService.listCollection("items", {}, {});
     }
     export async function updateItem(item: Item) {
-        await mongoService.updateOneCollection("Item", { _id: new ObjectId(item._id) }, { $set: { status: item._id } });
+        await mongoService.updateOneCollection("items", { _id: new ObjectId(item._id) }, { $set: { status: item._id } });
     }
     export async function deleteItem(item: string) {
-        await mongoService.deleteOneCollection("Item", { _id: new ObjectId(item) });
+        await mongoService.deleteOneCollection("items", { _id: new ObjectId(item) });
     }

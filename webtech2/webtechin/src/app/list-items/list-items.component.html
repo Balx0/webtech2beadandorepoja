@@ -1,4 +1,4 @@
-<h2>This will be the page where we list our items</h2>>
+<h2>This will be the page where we list our items</h2>
 
 <!---
 <ul class="items" *ngFor="let item of items">
@@ -8,7 +8,7 @@
 </ul>
 -->
 
-<table mat-table [dataSource]="names" class="mat-elevation-z8">
+<table mat-table [dataSource]="items" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -16,21 +16,20 @@
     <!-- Position Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let names"> {{names.name}} </td>
+      <td mat-cell *matCellDef="let items"> {{items.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef> Price </th>
-        <td mat-cell *matCellDef="let names"> {{names.price}} </td>
+        <td mat-cell *matCellDef="let items"> {{items.price}} </td>
       </ng-container>
 
       <ng-container matColumnDef="expiration">
         <th mat-header-cell *matHeaderCellDef> Expiration </th>
-        <td mat-cell *matCellDef="let names"> {{names.expiration}} </td>
+        <td mat-cell *matCellDef="let items"> {{items.expiration}} </td>
       </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
-  
+

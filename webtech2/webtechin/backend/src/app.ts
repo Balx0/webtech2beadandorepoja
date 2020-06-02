@@ -1,21 +1,21 @@
-import * as express from "express";
-import * as cors from "cors";
-import { Item } from "./Model/Item";
+import * as express from 'express';
+import * as cors from 'cors';
+import { Item } from './Model/Item';
+import { Error } from './Model/Error';
+import { Validator } from './validators';
+import { createTable, listItems, updateItem, deleteItem, addItem } from './Services/ItemService';
+import { createDB } from './Services/DBCreateService';
 
-import { Validator } from "./validators";
-import { createTable, listItems, updateItem, deleteItem, addItem } from "./Services/ItemService";
-import { createDB } from "./Services/DBCreateService";
+export const app = express();
 
-export const app = express()
+const bodyParser = require('body-parser');
+const url = 'mongodb://localhost:27017/itemDataBase';
 
-const bodyParser = require('body-parser')
-const url = "mongodb://localhost:27017/tdkDB";
+const databaseName = 'itemDataBase';
 
-const databaseName = "tdkDB";
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(bodyParser.urlencoded({ extended: true }))
-
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.options('*', cors());
 
 app.use(function (req, res, next) {

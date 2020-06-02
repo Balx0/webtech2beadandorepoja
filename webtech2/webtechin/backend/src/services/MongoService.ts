@@ -1,11 +1,15 @@
-import { URL, DATABASENAME } from "../conf";
-import * as MongoClient from "mongodb";
+import * as MongoClient from 'mongodb';
+import { URL, DATABASENAME } from '../conf';
+
+
+
+//const MongoClient = require('mongodb').MongoClient;
 
 class MongoService {
     constructor(private url: string, private databaseName: string) {
 
     }
-    createDB(): Promise<void> {
+  createDB(): Promise<void> {
         return new Promise((resolve, reject) => {
             MongoClient.connect(this.url, {
                 useUnifiedTopology: true,
@@ -15,7 +19,7 @@ class MongoService {
                 .catch(err => {
                     console.log('DB Connection Error: ${err.message}');
                     reject(err.message);
-                })
+                });
         });
     }
     createCollection(collectionName: string): Promise<void> {
@@ -35,8 +39,7 @@ class MongoService {
                     db.close();
                     reject(error.message);
                 }).finally(() => {
-                    //db.close();
-                })
+                });
             }, (error) => {
                 console.log(error);
                 reject(error.message);
@@ -63,8 +66,8 @@ class MongoService {
                         db.close();
                         reject(err.message);
                     }).finally(() => {
-                        console.log('Close DB');
-                    })
+                        console.log('Closing DB');
+                    });
                 });
         });
     }
@@ -85,7 +88,7 @@ class MongoService {
                         db.close();
                         reject(err.message);
                     }).finally(() => {
-                        console.log('Close DB');
+                        console.log('Closing DB');
                     })
                 });
         });
@@ -111,7 +114,7 @@ class MongoService {
                         db.close();
                         reject(err.message);
                     }).finally(() => {
-                        console.log('Close DB');
+                        console.log('Closing DB');
                     })
                 });
         });
@@ -137,8 +140,7 @@ class MongoService {
                         db.close();
                         reject(err.message);
                     }).finally(() => {
-                        console.log('Close DB');
-                        //db.close();
+                        console.log('Closing DB');
                     })
                 });
         });
