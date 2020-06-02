@@ -11,6 +11,11 @@ import { ListItemsComponent } from './list-items/list-items.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MaterialModule} from './add-item/material-module'
+import { ItemService } from './services/ItemService';
+
+
+
 
 
 @NgModule({
@@ -27,9 +32,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HttpClientModule,
     MatInputModule,
     MatCheckboxModule,
-  ],
+    MaterialModule,
+    ],
   providers: [
-    ListItemService
+    ItemService
   ],
   bootstrap: [AppComponent]
 })
