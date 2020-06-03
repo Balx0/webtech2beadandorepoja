@@ -88,7 +88,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {}

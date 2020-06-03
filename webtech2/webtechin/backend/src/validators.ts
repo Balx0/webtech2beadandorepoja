@@ -11,7 +11,8 @@ export class Validator {
       errors.push(new Error('item', 'No item given'));
       return errors;
     }
-    if (!item.name) {
+    if (item.name == undefined) {
+      console.log("oupsie")
       errors.push(
         new Error(
           'item.name',

@@ -1,25 +1,33 @@
 <h2>Page to add new items to our db</h2>
 
-<form class="example-form">
+<form  class="example-form">
   
     <p>
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="form-element">
         <mat-label>ItemName</mat-label>
-        <textarea matInput  [(ngModel)]="newItem.name" [ngModelOptions]="{standalone: true}" placeholder="Butter"></textarea>
+        <input type="text" name="name" matInput [(ngModel)]="newItem.name"  placeholder="Butter">
+        <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
-      <mat-form-field class="example-full-width">
+    </p>
+    <p>
+      <mat-form-field class="form-element">
         <mat-label>Item Price</mat-label>
-        <textarea matInput [(ngModel)]="newItem.price" [ngModelOptions]="{standalone: true}"></textarea>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
+        <input type="number" name="price" matInput [(ngModel)]="newItem.price" >
+            </mat-form-field>
+          </p>
+          <p>
+      <mat-form-field class="form-element">
         <mat-label>Expiration Date</mat-label>
-        <textarea matInput [(ngModel)]="newItem.expiration" [ngModelOptions]="{standalone: true}" placeholder="2020.05.04."></textarea>
+        <input type="date" matInput name="expiration" [(ngModel)]="newItem.expiration"  placeholder="2020.05.04.">
       </mat-form-field>
     </p>
 
     <button mat-raised-button type="button" (click)="postItem(newItem)" color="primary">Save Item</button>
    
+
   </form>
+
+  
 
   <mat-list>The item being added is:
     <mat-list-item> Name: {{newItem.name}}</mat-list-item>

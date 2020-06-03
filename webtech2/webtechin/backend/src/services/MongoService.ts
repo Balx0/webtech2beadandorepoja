@@ -102,11 +102,12 @@ class MongoService {
             })
                 .then((db) => {
                     var dbo = db.db(this.databaseName);
-                    console.log(newValues);
+                    //console.log(newValues);
+                    
                     return dbo.collection(collectionName).updateOne(query, newValues).then((collection) => {
                         console.log(collection);
                         if (collection.modifiedCount == 0) {
-                            throw new Error("Couldn't update");
+                            throw new Error("Couldn't update item");
                         }
                         db.close();
                         resolve();

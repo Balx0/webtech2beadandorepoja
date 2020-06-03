@@ -37,6 +37,14 @@ export class ListItemsComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.items);
   }
 
+  openDialog(item: Item){
+    let dialogRef = this.dialog.open(DialogComponent, {data: item});
+
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(`dialog result:  ${result}`);
+    })
+  }
+
   getItems() {
     this.ItemService.getItems().subscribe(items => {
       console.log(items);

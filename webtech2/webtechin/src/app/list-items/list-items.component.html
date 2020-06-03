@@ -32,7 +32,7 @@
       <ng-container matColumnDef="update">
         <th mat-header-cell *matHeaderCellDef> Update </th>
         <td mat-cell *matCellDef="let items">
-            <button mat-button >Open dialog</button>
+            <button mat-button (click)="openDialog(items)">update</button>
                <!-- <button (click)="updateItem(items)" mat-stroked-button>Update</button>-->
               
         </td>

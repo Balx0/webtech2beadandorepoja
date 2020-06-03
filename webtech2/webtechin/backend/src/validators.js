@@ -12,7 +12,8 @@ var Validator = /** @class */ (function () {
             errors.push(new Error_1.Error('item', 'No item given'));
             return errors;
         }
-        if (!item.name) {
+        if (item.name == undefined) {
+            console.log("oupsie");
             errors.push(new Error_1.Error('item.name', 'Item name must be given'));
         }
         if (!item.price) {

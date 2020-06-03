@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Update Item</h2>
+<mat-dialog-content>Here you can update your selected item:     </mat-dialog-content>>
+    
+        <mat-form-field class="example-full-width">
+          <mat-label>name</mat-label>
+          <input matInput [(ngModel)]="data.name" placeholder="Item Name" value={{data.name}}>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>price</mat-label>
+            <input matInput [(ngModel)]="data.price" placeholder="Item Name" value={{data.price}}>
+          </mat-form-field>
+
+<mat-dialog-actions>
+    <button mat-dialog-close mat-dialog-close="true" (click)="updateItem(data)">Save</button>
+    <button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
