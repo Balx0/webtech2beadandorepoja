@@ -46,7 +46,7 @@ export class AddItemComponent implements OnInit {
  postItem(item: Item) {
    if(!item.name){
      alert('No item name given!')
-   }else if(!item.price){
+   }else if(!item.price || item.price < 0 ){
      alert('No item price given!')
    }else if(!item.expiration){
     alert('No item expiration given!')
