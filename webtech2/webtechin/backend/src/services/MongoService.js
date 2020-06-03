@@ -107,7 +107,7 @@ var MongoService = /** @class */ (function () {
                 return dbo.collection(collectionName).updateOne(query, newValues).then(function (collection) {
                     console.log(collection);
                     if (collection.modifiedCount == 0) {
-                        throw new Error("Couldn't update item");
+                        throw new Error('Couldn\'t update item');
                     }
                     db.close();
                     resolve();
@@ -124,7 +124,7 @@ var MongoService = /** @class */ (function () {
     MongoService.prototype.deleteOneCollection = function (collectionName, query) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            console.log("we here");
+            console.log('we here');
             MongoClient.connect(_this.url, {
                 useUnifiedTopology: true,
                 useNewUrlParser: true

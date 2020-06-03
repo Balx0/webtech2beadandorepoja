@@ -10,7 +10,7 @@ class MongoService {
     constructor(private url: string, private databaseName: string) {
 
     }
-  createDB(): Promise<void> {
+    createDB(): Promise<void> {
         return new Promise((resolve, reject) => {
             MongoClient.connect(this.url, {
                 useUnifiedTopology: true,
@@ -103,11 +103,10 @@ class MongoService {
                 .then((db) => {
                     var dbo = db.db(this.databaseName);
                     //console.log(newValues);
-                    
                     return dbo.collection(collectionName).updateOne(query, newValues).then((collection) => {
                         console.log(collection);
                         if (collection.modifiedCount == 0) {
-                            throw new Error("Couldn't update item");
+                            throw new Error('Couldn\'t update item');
                         }
                         db.close();
                         resolve();
@@ -117,7 +116,7 @@ class MongoService {
                         reject(err.message);
                     }).finally(() => {
                         console.log('Closing DB');
-                    })
+                    });
                 });
         });
     }
@@ -125,29 +124,29 @@ class MongoService {
 
     deleteOneCollection(collectionName: string, query: any): Promise<void> {
         return new Promise((resolve, reject) => {
-            console.log("we here")
+            console.log('we here')
             MongoClient.connect(this.url, {
                 useUnifiedTopology: true,
                 useNewUrlParser: true,
             })
                 .then((db) => {
                     var dbo = db.db(this.databaseName);
-                    
+
                     return dbo.collection(collectionName).deleteOne(query).then((collection) => {
-                        
+
                         if (collection.deletedCount == 0) {
                             throw new Error("Could not delete item");
                         }
                         db.close();
                         resolve();
                     }).catch(err => {
-                       
+
                         console.log(`DB Connection Error: ${err.message}`);
                         db.close();
                         reject(err.message);
                     }).finally(() => {
                         console.log('Closing DB');
-                    })
+                    });
                 });
         });
     }

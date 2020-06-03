@@ -45,16 +45,16 @@ export class AddItemComponent implements OnInit {
 
  postItem(item: Item) {
    if(!item.name){
-     alert('No item name given!')
+     alert('No item name given!');
    }else if(!item.price || item.price < 0 ){
-     alert('No item price given!')
+     alert('No item price given!');
    }else if(!item.expiration){
-    alert('No item expiration given!')
+    alert('No item expiration given!');
    } else{
   this.ItemService.addItem(this.newItem).subscribe(() => {
-    alert("Item added!");
+    alert('Item added!');
   }, () => {
-    alert("Item could not be added!");
+    alert('Item could not be added!');
   }
   );
 
