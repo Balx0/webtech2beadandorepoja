@@ -41,6 +41,7 @@ export class ListItemsComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogComponent, {data: item});
 
     dialogRef.afterClosed().subscribe(result =>{
+      this.getItems();
       console.log(`dialog result:  ${result}`);
     })
   }

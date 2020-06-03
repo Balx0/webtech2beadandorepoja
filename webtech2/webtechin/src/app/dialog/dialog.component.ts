@@ -3,6 +3,7 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Item } from '../model/item';
 import {ItemService} from '../services/ItemService';
 
+
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -13,11 +14,14 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  newItem = new Item();
-  mCopy = {...this.newItem};
-  
+
   updateItem(data: Item) {
     console.log(data);
+    if(!data.name){
+      alert('no name, is not a name');
+    }else if(!data.price || data.price < 0 ){
+      alert('nothing is free!');
+    }else{
     this.ItemService.updateItem(data).subscribe(() => {
       alert('Item updated!');
     }, () => {
@@ -25,6 +29,6 @@ export class DialogComponent implements OnInit {
     }
     );
   }
-
+  }
 }
 
